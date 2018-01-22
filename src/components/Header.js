@@ -1,7 +1,6 @@
 import React from 'react';
 
-// ES5 way of writing a function declaration
-// function Header(props) { insert code }
+
 const Header = (props) => {
   return (
     <header className="top">
