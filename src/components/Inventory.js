@@ -1,20 +1,13 @@
 import React from 'react';
-// import AddFishForm from './AddFishForm';
+import AddFishForm from './AddFishForm';
 
 class Inventory extends React.Component {
   render() {
     return (
-      <form className="fish-edit">
-        <input type="text" placeholder="Fish Name" />
-        <input type="text" placeholder="Fish Price" />
-        <select>
-          <option value="available">Fresh!</option>
-          <option value="unavailable">Sold Out!</option>
-        </select>
-        <textarea placeholder="Fish Desc"></textarea>
-        <input type="text" placeholder="Fish Image"/>
-        <button type="submit">+ Add Item</button>
-      </form>
+      <div>
+        <h2>Inventory</h2>
+        <AddFishForm />
+      </div>
 
     )
   }
