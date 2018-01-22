@@ -1,4 +1,5 @@
 import React from 'react';
+
 import Header from './Header';
 import Order from './Order';
 import Inventory from './Inventory';
@@ -8,7 +9,7 @@ class App extends React.Component {
     return (
       <div className="catch-of-the-day">
         <div className="menu">
-          <Header />
+          <Header tagline="Fresh Seafood Market"/> {/* header component*/}
         </div>
         <Order />
         <Inventory/>
