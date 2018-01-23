@@ -11,6 +11,7 @@ import App from './components/App';
 import StorePicker from './components/StorePicker';
 import NotFound from './components/NotFound';
 
+// STATELESS FUNCTIONS WITH ROUTES
 const Root = () => {
   return (
     <BrowserRouter>
@@ -22,5 +23,7 @@ const Root = () => {
     </BrowserRouter>
   )
 }
+
+// With BrowserRouter, one can go to the all three routes BUT manually. We'll need to use context route in StorePicker to automatically go to the store/:storeId.
 
 render(<Root/>, document.querySelector('#main'));
