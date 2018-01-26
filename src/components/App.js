@@ -21,7 +21,7 @@ class App extends React.Component {
   }
 
   // Everytime we make a function/method, we have to bind them under super();
-  
+
   // This methods will let the fish 'swim' up to the App.js from AddFishForm.js
   addFish(fish){
 
@@ -61,7 +61,7 @@ class App extends React.Component {
             {
               Object
                 .keys(this.state.fishes)
-                .map(key => <Fish key={key} details={this.state.fishes[key]}/>)
+                .map(key => <Fish key={key} details={this.state.fishes[key]} addToOrder={this.addToOrder}/>)
             }
           </ul>
         </div>
