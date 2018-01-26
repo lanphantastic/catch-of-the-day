@@ -11,6 +11,8 @@ class App extends React.Component {
     super();
     this.addFish = this.addFish.bind(this);
     this.loadSamples = this.loadSamples.bind(this);
+    this.addToOrder = this.addToOrder.bind(this);
+
     // get initial state
     this.state = {
       fishes: {},
@@ -18,6 +20,8 @@ class App extends React.Component {
     };
   }
 
+  // Everytime we make a function/method, we have to bind them under super();
+  
   // This methods will let the fish 'swim' up to the App.js from AddFishForm.js
   addFish(fish){
 
@@ -35,6 +39,17 @@ class App extends React.Component {
     this.setState({
       fishes: sampleFishes
     })
+  }
+
+  addToOrder(key){
+    // take a copy of our state
+    const order = {...this.state.order};
+
+    // update or dadd the new number of fish ordered
+    order[key] = order[key] + 1 || 1;
+
+    // update our state
+    this.setState({ order }) // or use order: order
   }
 
   render() {
