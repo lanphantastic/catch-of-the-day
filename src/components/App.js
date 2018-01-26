@@ -7,7 +7,6 @@ import Fish from './Fish';
 
 class App extends React.Component {
 
-
   constructor(){
     super();
     this.addFish = this.addFish.bind(this);
@@ -37,6 +36,7 @@ class App extends React.Component {
       fishes: sampleFishes
     })
   }
+
   render() {
     return (
       <div className="catch-of-the-day">
