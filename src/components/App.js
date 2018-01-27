@@ -56,23 +56,35 @@ class App extends React.Component {
     return (
       <div className="catch-of-the-day">
         <div className="menu">
+
           <Header tagline="Fresh Seafood Market" />
           <ul className="list-of-fishes">
             {
               Object
                 .keys(this.state.fishes)
-                .map(key => <Fish key={key} index={key} details={this.state.fishes[key]} addToOrder={this.addToOrder}/>)
+                .map(key =>
+                  <Fish key={key}
+                  index={key}
+                  details={this.state.fishes[key]}
+                  addToOrder={this.addToOrder}
+                  />)
             }
           </ul>
         </div>
-        <Order />
+
+        {/*pass in App's component's states: fishes and order */}
+        <Order fishes={this.state.fishes} order={this.state.order}/>
+
         <Inventory addFish={this.addFish} loadSamples={this.loadSamples} />
-        {/* remember that addFish and loadSamples becomes a props when you add after the CAPITALIZE component's name */}
+
+      {/* remember that addFish and loadSamples becomes a props when you add after the CAPITALIZE component's name */}
+
       </div>
+      // END OF catch-of-the-day
     )
   }
 }
 
 export default App;
 
-{/*put any property between Header and tagline (line 30) above like age="5000", cool={true} or any attribute will be the property and value. But it won't display onto the view so in order to access it, go to your Header.js and use props.tagline (line 15) */}
+/*put any property between Header and tagline (line 30) above like age="5000", cool={true} or any attribute will be the property and value. But it won't display onto the view so in order to access it, go to your Header.js and use props.tagline (line 15) */
