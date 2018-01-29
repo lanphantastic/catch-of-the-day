@@ -2,6 +2,10 @@ import React from 'react';
 import { formatPrice } from '../helpers';
 
 class Order extends React.Component {
+  constructor(){
+    super();
+    this.renderOrder = this.renderOrder.bind(this);
+  }
 
   renderOrder(key){
     const fish = this.props.fishes[key];
