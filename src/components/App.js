@@ -25,14 +25,31 @@ class App extends React.Component {
 
   // This is a built-in methods for lifecycle
   componentWillMount(){
+    // this runs right before the <App> is rendered
     this.ref = base.syncState(`${this.props.params.storeId}/fishes`, {
       context: this,
       state: 'fishes'
     });
+
+    // check if there is any order in localStorage
+    const localStorageRef = localStorage.getItem(`order-${this.props.params.storeId}`);
+
+    if (localStorageRef) {
+      //update the <App> component's order state
+      this.setState({
+        order: JSON.parse(localStorageRef) // convert string back to object
+      });
+    }
+
   }
 
   componentWillUnmount(){
     base.removeBinding(this.ref);
+  }
+
+  componentWillUpdate(nextProps, nextState){
+    localStorage.setItem(`order-${this.props.params.storeId}`,
+    JSON.stringify(nextState.order)); // convert object to string
   }
   // This methods will let the fish 'swim' up to the App.js from AddFishForm.js
   addFish(fish){
@@ -85,7 +102,11 @@ class App extends React.Component {
         </div>
 
         {/*pass in App's component's states: fishes and order */}
-        <Order fishes={this.state.fishes} order={this.state.order}/>
+        <Order
+          fishes={this.state.fishes}
+          order={this.state.order}
+          params={this.props.params}
+          />
 
         <Inventory addFish={this.addFish} loadSamples={this.loadSamples} />
 
