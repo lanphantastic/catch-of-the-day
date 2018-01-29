@@ -4,6 +4,7 @@ import Order from './Order';
 import Inventory from './Inventory';
 import sampleFishes from '../sample-fishes';
 import Fish from './Fish';
+import base from '../base';
 
 class App extends React.Component {
 
@@ -22,6 +23,17 @@ class App extends React.Component {
 
   // Everytime we make a function/method, we have to bind them under super();
 
+  // This is a built-in methods for lifecycle
+  componentWillMount(){
+    this.ref = base.syncState(`${this.props.params.storeId}/fishes`, {
+      context: this,
+      state: 'fishes'
+    });
+  }
+
+  componentWillUnmount(){
+    base.removeBinding(this.ref);
+  }
   // This methods will let the fish 'swim' up to the App.js from AddFishForm.js
   addFish(fish){
 
