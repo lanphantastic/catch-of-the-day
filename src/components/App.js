@@ -11,10 +11,13 @@ class App extends React.Component {
   constructor(){
     super();
     this.addFish = this.addFish.bind(this);
-    this.loadSamples = this.loadSamples.bind(this);
-    this.addToOrder = this.addToOrder.bind(this);
     this.updateFish = this.updateFish.bind(this);
     this.removeFish = this.removeFish.bind(this);
+    
+    this.loadSamples = this.loadSamples.bind(this);
+
+    this.addToOrder = this.addToOrder.bind(this);
+    this.removeFromOrder = this.removeFromOrder.bind(this);
 
     // get initial state
     this.state = {
@@ -74,7 +77,7 @@ class App extends React.Component {
 
   removeFish(key){
     const fishes = {...this.state.fishes}
-    fishes[key] = null;
+    fishes[key] = null; // for Firebase. For local, use delete order[key]
     this.setState({ fishes });
   }
 
@@ -93,6 +96,12 @@ class App extends React.Component {
 
     // update our state
     this.setState({ order }) // or use order: order
+  }
+
+  removeFromOrder(key){
+    const order = {...this.state.order};
+    delete order[key];
+    this.setState({ order });
   }
 
   render() {
