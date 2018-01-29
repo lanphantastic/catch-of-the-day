@@ -13,6 +13,7 @@ class App extends React.Component {
     this.addFish = this.addFish.bind(this);
     this.loadSamples = this.loadSamples.bind(this);
     this.addToOrder = this.addToOrder.bind(this);
+    this.updateFish = this.updateFish.bind(this);
 
     // get initial state
     this.state = {
@@ -64,6 +65,12 @@ class App extends React.Component {
     this.setState({ fishes }); // alternative: fishes: fishes (line 13: line 22)
   }
 
+  updateFish(key, updatedFish){
+    const fishes = {...this.state.fishes};
+    fishes[key] = updatedFish;
+    this.setState({ fishes });
+  }
+
   loadSamples(){
     this.setState({
       fishes: sampleFishes
@@ -108,7 +115,12 @@ class App extends React.Component {
           params={this.props.params}
           />
 
-        <Inventory addFish={this.addFish} loadSamples={this.loadSamples} />
+        <Inventory
+          addFish={this.addFish}
+          loadSamples={this.loadSamples}
+          fishes={this.state.fishes}
+          updateFish={this.updateFish}
+          />
 
       {/* remember that addFish and loadSamples becomes a props when you add after the CAPITALIZE component's name */}
 
