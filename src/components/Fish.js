@@ -2,6 +2,9 @@ import React from 'react';
 import { formatPrice } from '../helpers';
 
 class Fish extends React.Component {
+  // const index = this.props.index;
+  // const details = this.props.details;
+  // These two variables are combined on line 9
   render(){
     const { details, index } = this.props;
     const isAvailable = details.status === 'available';
