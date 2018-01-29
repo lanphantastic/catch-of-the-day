@@ -3,6 +3,23 @@ import { formatPrice } from '../helpers';
 
 class Order extends React.Component {
 
+  renderOrder(key){
+    const fish = this.props.fishes[key];
+    const count = this.props.order[key];
+
+    // if fish is unavailable
+    if(!fish || fish['status'] === 'unavailable'){
+      return <li key={key}>Sorry, {fish ? fish['name'] : 'fish'} is no longer available!</li>
+    }
+
+    // but when the fish is available
+    return (
+      <li key={key}>
+        <span>{count} lbs {fish['name']}</span>
+        <span className="price">{formatPrice(count * fish['price'])}</span>
+      </li>
+    )
+  }
   render() {
 
     // access fish1, fish2, fish3, etc. as an array
@@ -28,6 +45,7 @@ class Order extends React.Component {
       <div className="order-wrap">
         <h2>Your Order</h2>
         <ul className="order">
+          {orderIds.map(this.renderOrder)}
           <li className="total">
             <strong>Total:</strong>{formatPrice(total)}
           </li>
