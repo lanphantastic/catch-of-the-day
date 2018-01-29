@@ -16,6 +16,10 @@ const Header = (props) => {
   )
 }
 
+Header.propTypes = {
+  tagline: React.PropTypes.string.isRequired
+};
+
 export default Header;
 
-// Since the header only render some html dom, we don't need a full react component. We just need a stateless functions. Meaning, if you have any other method besides 'render', we can make it a stateless functions. 
+// Since the header only render some html dom, we don't need a full react component. We just need a stateless functions. Meaning, if you have any other method besides 'render', we can make it a stateless functions.

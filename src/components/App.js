@@ -148,6 +148,10 @@ class App extends React.Component {
   }
 }
 
+App.propTypes = {
+  params: React.PropTypes.object.isRequired
+};
+
 export default App;
 
 /*put any property between Header and tagline (line 30) above like age="5000", cool={true} or any attribute will be the property and value. But it won't display onto the view so in order to access it, go to your Header.js and use props.tagline (line 15) */
