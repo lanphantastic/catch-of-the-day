@@ -49,8 +49,13 @@ class Inventory extends React.Component {
       if (!data.owner) {
         storeRef.set({
           owner: authData.user.uid
-        })
+        });
       }
+
+      this.setState({
+        uid: authData.user.uid,
+        owner: data.owner || authData.user.uid
+      });
     })
   }
 
