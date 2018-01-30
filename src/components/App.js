@@ -138,6 +138,7 @@ class App extends React.Component {
           fishes={this.state.fishes}
           updateFish={this.updateFish}
           removeFish={this.removeFish}
+          storeId={this.props.params.storeId}
           />
 
       {/* remember that addFish and loadSamples becomes a props when you add after the CAPITALIZE component's name */}
