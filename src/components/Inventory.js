@@ -17,6 +17,17 @@ class Inventory extends React.Component {
     }
   }
 
+  // LIFECYCLE
+  componentDidMount(){
+    base.onAuth((user) => {
+      if (user) {
+        this.authHandler(null, { user });
+      }
+    });
+  }
+  // This lifecycle checks if you have already login or not whenever you refresh the page. If login, then it will automatically let you start working on your inventory.
+
+  // EDIT AND UPDATE FORM INSTANTLY FUNCTIONS
   handleChange(e, key) {
     const fish = this.props.fishes[key];
     // take a copy of that fish and update it with the new data
@@ -27,6 +38,7 @@ class Inventory extends React.Component {
     this.props.updateFish(key, updatedFish);
   }
 
+  // AUTHENTICATION FUNCTIONS
   authenticate(provider){
     console.log(`Trying to log in with ${provider}`);
     base.authWithOAuthPopup(provider, this.authHandler);
@@ -48,7 +60,7 @@ class Inventory extends React.Component {
       //claim it as our own if there is no owner already
       if (!data.owner) {
         storeRef.set({
-          owner: authData.user.uid
+          owner: authData.user.uid // should see this in your firebase's database
         });
       }
 
@@ -59,6 +71,7 @@ class Inventory extends React.Component {
     })
   }
 
+  // RENDER FUNCTIONS
   renderLogin(){
     return(
       <nav className="login">
@@ -120,6 +133,7 @@ class Inventory extends React.Component {
   }
 }
 
+// VALIDATE PROPTYPES
 Inventory.propTypes = {
   fishes: React.PropTypes.object.isRequired,
   updateFish: React.PropTypes.func.isRequired,
